@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Wishlist</string>
+    <string name="Update_Wish">Dileği Güncelle</string>
+    <string name="Add_Wish">Dilek Ekle</string>
+    <string name="Wishlist">Dilek Listesi</string>
+    <string name="DeleteIconDescription">Silme İkonu</string>
+    <string name="WishTextFieldTitle">Başlık</string>
+    <string name="WishTextFieldDescription">Açıklama</string>
+</resources>

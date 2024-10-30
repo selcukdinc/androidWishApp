@@ -1,5 +1,6 @@
 package io.github.selcukdinc.mywishlistapp
 
+import android.content.pm.PackageManager.ComponentEnabledSetting
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -15,10 +16,13 @@ import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.material3.Button
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
@@ -30,7 +34,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import io.github.selcukdinc.mywishlistapp.data.Wish
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+
 
 @Composable
 fun AddEditDetailView(
@@ -39,9 +45,14 @@ fun AddEditDetailView(
     navController: NavController
 ){
 
+
+
     val snackMessage = remember{
         mutableStateOf("")
     }
+
+    var isButtonEnabled by remember { mutableStateOf(true) }
+
     val scope = rememberCoroutineScope()
     val scaffoldState = rememberScaffoldState()
     if (id != 0L){
@@ -52,6 +63,11 @@ fun AddEditDetailView(
         viewModel.wishTitleState = ""
         viewModel.wishDescriptionState = ""
     }
+
+//    LaunchedEffect (key1 = snackMessage.value){
+//        snackMessage.value = stringResource(R.string.Wishlist)
+//    }
+
 
     Scaffold (
         topBar = {
@@ -76,7 +92,8 @@ fun AddEditDetailView(
                 value = viewModel.wishTitleState,
                 onValueChanged = {
                     viewModel.onWishTitleChanged(it)
-                })
+                },
+                isButtonEnabled)
 
             Spacer(modifier = Modifier.height(10.dp))
 
@@ -85,9 +102,16 @@ fun AddEditDetailView(
                 value = viewModel.wishDescriptionState,
                 onValueChanged = {
                     viewModel.onWishDescriptionChanged(it)
-                })
+                },
+                isButtonEnabled)
             Spacer(modifier = Modifier.height(10.dp))
+
             Button(onClick = {
+                isButtonEnabled = false
+                scope.launch {
+                    scaffoldState.snackbarHostState.showSnackbar(snackMessage.value)
+                    navController.navigateUp()
+                }
                 if(viewModel.wishTitleState.isNotEmpty() &&
                     viewModel.wishDescriptionState.isNotEmpty()){
                     if (id != 0L){
@@ -104,17 +128,15 @@ fun AddEditDetailView(
                                 title = viewModel.wishTitleState.trim(),
                                 description = viewModel.wishDescriptionState.trim())
                         )
-                        snackMessage.value = "Wish has been created"
+                        
+                        snackMessage.value = "Wish Created"
                     }
                 }else{
                     // Enter fields for wish to be created
                     snackMessage.value = "Enter fields to create a wish"
                 }
-                scope.launch {
-                    scaffoldState.snackbarHostState.showSnackbar(snackMessage.value)
-                    navController.navigateUp()
-                }
-            }){
+
+            }, enabled = isButtonEnabled){
                 Text(
                     text = if (id != 0L)
                         stringResource(R.string.Update_Wish)
@@ -124,7 +146,6 @@ fun AddEditDetailView(
                 )
             }
 
-
         }
     }
 }
@@ -133,7 +154,8 @@ fun AddEditDetailView(
 fun WishTextField(
     label: String,
     value: String,
-    onValueChanged: (String) -> Unit
+    onValueChanged: (String) -> Unit,
+    enabled : Boolean = true
 ){
 
     OutlinedTextField(
@@ -148,7 +170,8 @@ fun WishTextField(
             cursorColor = colorResource(id = R.color.black),
             focusedLabelColor = colorResource(id = R.color.black),
             unfocusedLabelColor = colorResource(id = R.color.black)
-        )
+        ),
+        enabled = enabled
     )
 
     /*

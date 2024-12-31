@@ -7,4 +7,12 @@
     <string name="DeleteIconDescription">Silme İkonu</string>
     <string name="WishTextFieldTitle">Başlık</string>
     <string name="WishTextFieldDescription">Açıklama</string>
+    <string name="SignatureDate">İmza Tarihi :</string>
+    <string name="DayOfWordAdd">Günün Sözünü Ekle</string>
+    <string name="DayOfWordEdit">Günün Sözünü Güncelle</string>
+    <string name="DayOfDate">Günün Tarihi</string>
+    <string name="WhatsDayOfWord">Günün sözü nedir?</string>
+    <string name="YearOfWords">YIlın Sözleri</string>
+    <string name="AddDayOfWord">Günün Sözünü Ekle</string>
+    <string name="UpdateDayOfWord">Günün Sözünü Güncelle</string>
 </resources>

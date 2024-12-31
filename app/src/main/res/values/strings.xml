@@ -6,4 +6,12 @@
     <string name="DeleteIconDescription">Delete Icon</string>
     <string name="WishTextFieldTitle">Title</string>
     <string name="WishTextFieldDescription">Description</string>
+    <string name="SignatureDate">Signature Date :</string>
+    <string name="DayOfWordAdd">Add Day Of Word</string>
+    <string name="DayOfWordEdit">Edit The Day Of Word</string>
+    <string name="DayOfDate">Day Of Date</string>
+    <string name="WhatsDayOfWord">What is it day of word?</string>
+    <string name="YearOfWords">Year Of Words</string>
+    <string name="AddDayOfWord">Add day of Word</string>
+    <string name="UpdateDayOfWord">Update Day of Word</string>
 </resources>

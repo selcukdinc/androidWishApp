@@ -46,7 +46,7 @@ fun HomeView(
 ){
     val context = LocalContext.current
     Scaffold(
-        topBar = { AppBarView(title = stringResource(R.string.Wishlist), {
+        topBar = { AppBarView(title = stringResource(R.string.YearOfWords), {
             //Toast.makeText(context, "Button Clicked", Toast.LENGTH_LONG).show()
         })},
         floatingActionButton = {

@@ -1,6 +1,7 @@
 package io.github.selcukdinc.mywishlistapp
 
-import android.content.pm.PackageManager.ComponentEnabledSetting
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -16,7 +17,6 @@ import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.material3.Button
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -34,19 +34,17 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import io.github.selcukdinc.mywishlistapp.data.Wish
-import kotlinx.coroutines.Dispatchers
+import io.github.selcukdinc.mywishlistapp.utils.getCurrentDate
 import kotlinx.coroutines.launch
 
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun AddEditDetailView(
     id: Long,
     viewModel: WishViewModel,
     navController: NavController
 ){
-
-
-
     val snackMessage = remember{
         mutableStateOf("")
     }
@@ -61,7 +59,7 @@ fun AddEditDetailView(
         viewModel.wishDescriptionState = wish.value.description
     }else{
         viewModel.wishTitleState = ""
-        viewModel.wishDescriptionState = ""
+        viewModel.wishDescriptionState = "${stringResource(R.string.SignatureDate)} ${getCurrentDate()}"
     }
 
 //    LaunchedEffect (key1 = snackMessage.value){
@@ -73,8 +71,8 @@ fun AddEditDetailView(
         topBar = {
             AppBarView(
                 title =
-                if (id != 0L) stringResource(R.string.Update_Wish)
-                else stringResource(R.string.Add_Wish)
+                if (id != 0L) stringResource(R.string.DayOfWordEdit)
+                else stringResource(R.string.DayOfWordAdd)
             ) {navController.navigateUp()}
         },
         scaffoldState = scaffoldState
@@ -88,7 +86,7 @@ fun AddEditDetailView(
             Spacer(modifier = Modifier.height(10.dp))
 
             WishTextField(
-                label = stringResource(R.string.WishTextFieldTitle),
+                label = stringResource(R.string.WhatsDayOfWord),
                 value = viewModel.wishTitleState,
                 onValueChanged = {
                     viewModel.onWishTitleChanged(it)
@@ -98,12 +96,13 @@ fun AddEditDetailView(
             Spacer(modifier = Modifier.height(10.dp))
 
             WishTextField(
-                label = stringResource(R.string.WishTextFieldDescription),
+                label = stringResource(R.string.DayOfDate),
                 value = viewModel.wishDescriptionState,
                 onValueChanged = {
                     viewModel.onWishDescriptionChanged(it)
                 },
-                isButtonEnabled)
+                enabled = false
+            )
             Spacer(modifier = Modifier.height(10.dp))
 
             Button(onClick = {
@@ -139,9 +138,9 @@ fun AddEditDetailView(
             }, enabled = isButtonEnabled){
                 Text(
                     text = if (id != 0L)
-                        stringResource(R.string.Update_Wish)
+                        stringResource(R.string.UpdateDayOfWord)
                             else
-                                stringResource(R.string.Add_Wish),
+                                stringResource(R.string.AddDayOfWord),
                     style = TextStyle(fontSize = 18.sp)
                 )
             }

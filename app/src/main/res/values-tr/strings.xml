@@ -15,4 +15,6 @@
     <string name="YearOfWords">YIlın Sözleri</string>
     <string name="AddDayOfWord">Günün Sözünü Ekle</string>
     <string name="UpdateDayOfWord">Günün Sözünü Güncelle</string>
+    <string name="DayofOfWordCreated">Günün Sözü Eklendi</string>
+    <string name="Fill_Blanks">Günün sözünü eklemek için alanları doldurun</string>
 </resources>

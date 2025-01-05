@@ -14,4 +14,6 @@
     <string name="YearOfWords">Year Of Words</string>
     <string name="AddDayOfWord">Add day of Word</string>
     <string name="UpdateDayOfWord">Update Day of Word</string>
+    <string name="DayofOfWordCreated">Day of Word Created</string>
+    <string name="Fill_Blanks">Enter fields to create a day of word</string>
 </resources>

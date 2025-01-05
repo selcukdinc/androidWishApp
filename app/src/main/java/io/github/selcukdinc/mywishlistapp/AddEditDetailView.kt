@@ -50,7 +50,8 @@ fun AddEditDetailView(
     }
 
     var isButtonEnabled by remember { mutableStateOf(true) }
-
+    val smWishCreated = stringResource(R.string.YearOfWords)
+    val smFillBlanks =  stringResource(R.string.Fill_Blanks)
     val scope = rememberCoroutineScope()
     val scaffoldState = rememberScaffoldState()
     if (id != 0L){
@@ -128,11 +129,11 @@ fun AddEditDetailView(
                                 description = viewModel.wishDescriptionState.trim())
                         )
                         
-                        snackMessage.value = "Wish Created"
+                        snackMessage.value = smWishCreated
                     }
                 }else{
                     // Enter fields for wish to be created
-                    snackMessage.value = "Enter fields to create a wish"
+                    snackMessage.value = smFillBlanks
                 }
 
             }, enabled = isButtonEnabled){

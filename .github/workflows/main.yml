@@ -35,7 +35,7 @@ jobs:
             git log $branch -3 --pretty=format:"  - %h - %s%n%b" | awk '
               BEGIN { RS = ""; FS = "\n" }
               {
-                print "  - " $1
+                print "- " $1
                 if (NF > 1) {
                   for (i = 2; i <= NF; i++) {
                     print "        - " $i
@@ -53,7 +53,7 @@ jobs:
           git log origin/main -3 --pretty=format:"  - %h - %s%n%b" | awk '
               BEGIN { RS = ""; FS = "\n" }
               {
-                print "  - " $1
+                print "- " $1
                 if (NF > 1) {
                   for (i = 2; i <= NF; i++) {
                     print "        - " $i

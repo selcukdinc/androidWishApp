@@ -6,14 +6,13 @@
 ### Branches
 
 - DontBreakChain
-  -   - 93b8b49 - Versiyon 1.1001_DBC Günün tarihini alan fonksiyon eklendi
+-   - 93b8b49 - Versiyon 1.1001_DBC Günün tarihini alan fonksiyon eklendi
         - No description provided.
-  -   - 72c9afc - Versiyon 1.1001_DBC Kelimeler güncellendi
+-   - 72c9afc - Versiyon 1.1001_DBC Kelimeler güncellendi
         - No description provided.
-  -   - 60d55b8 - Versiyon 1.1001_DBC Top AppBar'ın kontrol kelimesi değişti
+-   - 60d55b8 - Versiyon 1.1001_DBC Top AppBar'ın kontrol kelimesi değişti
         - No description provided.
 
 - Main
-  -   - aa9ed16 - Update main.yml
-        - Main description added.
-        - Changed commit descriotin whitespace
+-   - e743a64 - Update main.yml
+        - No description provided.

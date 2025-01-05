@@ -31,8 +31,20 @@ jobs:
             branch_name=${branch#origin/}
             echo "- $branch_name" >> README.md
 
-            # En son 3 commit'i al
-            git log $branch -3 --pretty=format:"  - %h - %s (%ci)" >> README.md
+            # En son 3 commit'i al ve açıklamaları kontrol et
+            git log $branch -3 --pretty=format:"  - %h - %s%n%b" | awk '
+              BEGIN { RS = ""; FS = "\n" }
+              {
+                print "  - " $1
+                if (NF > 1) {
+                  for (i = 2; i <= NF; i++) {
+                    print "    - " $i
+                  }
+                } else {
+                  print "    - No description provided."
+                }
+              }
+            ' >> README.md
             echo "" >> README.md
           done
 

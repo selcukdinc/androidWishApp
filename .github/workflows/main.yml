@@ -18,11 +18,27 @@ jobs:
 
       - name: Generate Branch Commit Info
         run: |
-          echo "## Branch Commit Info" > README.md
-          for branch in $(git branch -r | grep -v main | grep -v HEAD); do
-            latest_commit=$(git log -1 --format="%h - %s (%ci)" $branch)
-            echo "- ${branch#origin/}: $latest_commit" >> README.md
+          echo "### Project Goal" > README.md
+          echo "" >> README.md
+          echo "- Main : Create a Wishlist" >> README.md
+          echo "- DBC : Day of Word like a diary. " >> README.md
+          echo "" >> README.md
+          echo "### Branches" >> README.md
+          echo "" >> README.md
+
+          # Tüm branch'leri dolaş ve commit bilgilerini al
+          for branch in $(git branch -r | grep -v 'HEAD\|main'); do
+            branch_name=${branch#origin/}
+            echo "- $branch_name" >> README.md
+
+            # En son 3 commit'i al
+            git log $branch -3 --pretty=format:"  - %h - %s (%ci)" >> README.md
+            echo "" >> README.md
           done
+
+          # Main branch'i özel olarak ekle
+          echo "- Main" >> README.md
+          git log origin/main -3 --pretty=format:"  - %h - %s (%ci)" >> README.md
         shell: bash
 
       - name: Commit and Push Changes

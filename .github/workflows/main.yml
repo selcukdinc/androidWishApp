@@ -50,19 +50,20 @@ jobs:
 
           # Main branch'i özel olarak ekle
           echo "- Main" >> README.md
-          git log origin/main -3 --pretty=format:"  - %h - %s%n%b" | awk '
-              BEGIN { RS = ""; FS = "\n" }
-              {
-                print "- " $1
-                if (NF > 1) {
-                  for (i = 2; i <= NF; i++) {
-                    print "        - " $i
-                  }
-                } else {
-                  print "        - No description provided."
+          git log main -3 --pretty=format:"  - %h - %s%n%b" | awk '
+            BEGIN { RS = ""; FS = "\n" }
+            {
+              print "  - " $1
+              if (NF > 1) {
+                for (i = 2; i <= NF; i++) {
+                  print "        - " $i
                 }
+              } else {
+                print "        - No description provided."
               }
-            ' >> README.md
+            }
+          ' >> README.md
+          echo "" >> README.md
         shell: bash
 
       - name: Commit and Push Changes

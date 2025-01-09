@@ -48,7 +48,7 @@ jobs:
           done
 
            # Main branch'i özel olarak ekle
-          for branch in $(git branch 'HEAD\|main'); do
+          for branch in $(git grep 'HEAD branch'); do
             branch_name=${branch#origin/}
             branch_info="${branch_info}- ${branch_name}\n"
             branch_info="${branch_info}$(git log $branch -3 --pretty=format:"  - %h - %s%n%b" | awk '

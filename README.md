@@ -8,15 +8,15 @@
 
 
 - DontBreakChain
-  -   - Test1 - Versiyon 1.1001_DBC SnackBar text'i çevrildi. Yeni Kelimeler Eklendi.
+  -   - 28fcd43 - Versiyon 1.1001_DBC SnackBar text'i çevrildi. Yeni Kelimeler Eklendi.
         - No description provided.
-  -   - Test2 - Versiyon 1.1001_DBC Günün tarihini alan fonksiyon eklendi
+  -   - 93b8b49 - Versiyon 1.1001_DBC Günün tarihini alan fonksiyon eklendi
         - No description provided.
-  -   - Test3 - Versiyon 1.1001_DBC Kelimeler güncellendi
+  -   - 72c9afc - Versiyon 1.1001_DBC Kelimeler güncellendi
         - No description provided.
 
 - main
-  -   - Test4 - Update README.md
+  -   - 2424db4 - Update README.md
         - No description provided.
 
 

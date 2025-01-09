@@ -18,7 +18,7 @@ jobs:
 
       - name: Append Branch Info to README
         run: |
-          # Mevcut README içeriğini oku, ancak "# Branch Information" ve sonrasını çıkar
+        
           existing_content=$(awk '/# Branch Information/{exit} {print}' README.md)
       
           # Yeni içeriği oluştur

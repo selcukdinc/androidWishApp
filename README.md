@@ -17,14 +17,7 @@ Test2
         - No description provided.
 
 - Main
-  -   - b550aba - Update main.yml
-        - Chnaged main branch commits flow\n\n# Branch Information\n\n- Main\n  -   - 74ec990 - Hold the readme info
-        - Add branch details to end of page\n\n- DontBreakChain\n  -   - 28fcd43 - Versiyon 1.1001_DBC SnackBar text'i çevrildi. Yeni Kelimeler Eklendi.
-        - No description provided.
-  -   - 93b8b49 - Versiyon 1.1001_DBC Günün tarihini alan fonksiyon eklendi
-        - No description provided.
-  -   - 72c9afc - Versiyon 1.1001_DBC Kelimeler güncellendi
-        - No description provided.\n\n\n\n# Branch Information\n\n- Main\n  -   - 81f6551 - Update README.md
+  -   - b550aba - Update main.yml\n\n# Branch Information\n\n- Main\n  -   - d58cfd1 - Update main.yml
         - No description provided.\n\n- DontBreakChain\n  -   - 28fcd43 - Versiyon 1.1001_DBC SnackBar text'i çevrildi. Yeni Kelimeler Eklendi.
         - No description provided.
   -   - 93b8b49 - Versiyon 1.1001_DBC Günün tarihini alan fonksiyon eklendi

@@ -16,13 +16,10 @@ jobs:
       - name: Fetch All Branches
         run: git fetch --all
 
-
-
-
       - name: Append Branch Info to README
         run: |
-          # Mevcut README içeriğini oku
-          existing_content=$(cat README.md)
+          # Mevcut README içeriğini oku, ancak "# Branch Information" ve sonrasını çıkar
+          existing_content=$(awk '/# Branch Information/{exit} {print}' README.md)
       
           # Yeni içeriği oluştur
           branch_info="# Branch Information\n\n"
@@ -43,7 +40,6 @@ jobs:
             }
           ')"
       
-          # Boş satır ekle
           branch_info="${branch_info}\n\n"
       
           # Tüm diğer branch'leri dolaş ve bilgileri ekle
@@ -68,6 +64,7 @@ jobs:
       
           # Mevcut içeriğin altına branch bilgilerini ekle
           echo "${existing_content}\n\n${branch_info}" > README.md
+
         shell: bash
 
       - name: Commit and Push Changes
